@@ -62,6 +62,17 @@ def adaptive_trapezoid(f, a, b, acc, output=False):
 
 
 def root_print_header(algorithm, accuracy):
+    """
+    Display the header for root-finding iterations.
+
+    This function prints a formatted header to the standard output, providing
+    information about the root-finding algorithm being used, the requested accuracy,
+    and column headers for the iterative steps.
+
+    Parameters:
+    - algorithm (str): The name of the root-finding algorithm being used.
+    - accuracy (float): The requested accuracy for the root-finding process.
+    """
     sys.stdout.write(
         "\n ROOT FINDING using "
         + algorithm
@@ -76,6 +87,19 @@ def root_print_header(algorithm, accuracy):
 
 
 def root_print_step(step, x, dx, f_of_x):
+    """
+    Display information about a step in the root-finding process.
+
+    This function prints the details of a single step in the root-finding process,
+    including the step number, the current guess for the root, the step size, and
+    the corresponding function value.
+
+    Parameters:
+    - step (int): The step number in the root-finding iteration.
+    - x (float): The current guess for the root.
+    - dx (float): The step size taken in the iteration.
+    - f_of_x (float): The function value at the current guess.
+    """
     sys.stdout.write(repr(step).rjust(5))
     for val in [x, dx, f_of_x]:
         sys.stdout.write("  " + repr(val).ljust(20))
@@ -83,6 +107,17 @@ def root_print_step(step, x, dx, f_of_x):
 
 
 def root_max_steps(algorithm, max_steps):
+    """
+    Raise an exception indicating that the maximum number of steps has been exceeded.
+
+    This function raises an exception when the maximum number of steps allowed in a
+    root-finding algorithm has been exceeded. It provides information about the
+    algorithm name and the specified maximum number of steps.
+
+    Parameters:
+    - algorithm (str): The name of the root-finding algorithm.
+    - max_steps (int): The maximum number of steps allowed.
+    """
     raise Exception(
         " " + algorithm + ": maximum number of steps " + repr(max_steps) + " exceeded\n"
     )
