@@ -22,6 +22,15 @@ def exp_minus_1_over_x(x):
                                       # very small values (close to zero) with a small
                                       # but non-zero number (1e-10 in this case).
     return np.where(x != 0, np.exp(-1/safe_x), 0)
+    """
+Computes the exponential of -1 divided by x, using numpy.exp and numpy.clip to avoid overflow.
+
+Args:
+  x (float): The number to be used in the exponential calculation.
+
+Returns:
+  float: The exponential of -1 divided by x, with safe clipping to avoid overflow.
+"""
 
 def cos_1_over_x(x):
     # Limiting the input to cos to avoid invalid values
@@ -31,3 +40,13 @@ def cos_1_over_x(x):
 
 def x_cubed_plus_constant(x, constant=1/2):
     return x**3 + constant
+    """
+Computes the cube of a number plus a specific constant.
+
+Args:
+  x (float): The number to be cubed.
+  constant (float, optional): The constant to be added to the cubed number. Defaults to 1/2.
+
+Returns:
+  float: The cube of the number plus the constant.
+"""
