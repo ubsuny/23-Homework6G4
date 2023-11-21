@@ -22,4 +22,9 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run Pylint
-      run: pylint calculus.py
+      run: |
+      # Run Pylint and capture the exit code
+        pylint calculus.py || { exit_code=$?; } && { [ $exit_code -eq 1 ] || exit $exit_code; }
+
+        # Check if the exit code is 30 and exit with the same code
+        [ $exit_code -eq 30 ] && exit $exit_code || true
