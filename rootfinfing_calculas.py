@@ -33,4 +33,15 @@ def root_print_step(step, x, dx, f_of_x):
         sys.stdout.write("  " + repr(val).ljust(20))
     sys.stdout.write("\n")
 
+def root_max_steps(algorithm, max_steps):
+    """Raises an exception when the maximum number of steps is exceeded.
+
+    Parameters:
+    - algorithm (str): The name of the root-finding algorithm.
+    - max_steps (int): The maximum number of allowed steps.
+    """
+    raise Exception(" " + algorithm + ": maximum number of steps " +
+                    repr(max_steps) + " exceeded\n")
+
+
 
