@@ -1,6 +1,6 @@
 from pickle import TRUE
 import numpy as np
-def simpson(f, a, b, n,return_iterations=True):
+def simpson(f, a, b, n):
     """Approximates the definite integral of f from a to b by
     the composite Simpson's rule, using n subintervals.
     From http://en.wikipedia.org/wiki/Simpson's_rule
@@ -14,7 +14,7 @@ def simpson(f, a, b, n,return_iterations=True):
 
     return s * h / 3
 
-def trapezoid(f, a, b, n,return_iterations=True):
+def trapezoid(f, a, b, n):
     """Approximates the definite integral of f from a to b by
     the composite trapezoidal rule, using n subintervals.
     From http://en.wikipedia.org/wiki/Trapezoidal_rule
