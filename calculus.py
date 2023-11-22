@@ -48,7 +48,7 @@ def adaptive_trapezoid(f, a, b, acc, output=False):
     h = b - a
     n = 1
     s = (f(a) + f(b)) * 0.5
-    if output == True:
+    if output:
         print("N = " + str(n + 1) + ",  Integral = " + str(h * s))
     while abs(h * (old_s - s * 0.5)) > acc:
         old_s = s
@@ -56,7 +56,7 @@ def adaptive_trapezoid(f, a, b, acc, output=False):
             s += f(a + (i + 0.5) * h)
         n *= 2.0
         h *= 0.5
-        if output == True:
+        if output:
             print("N = " + str(n) + ",  Integral = " + str(h * s))
     return h * s
 
