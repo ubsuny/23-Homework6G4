@@ -18,12 +18,10 @@ class TestCalculusFunctions(unittest.TestCase):
         def f(x):
             return x**2
 
-        # Initial guessses 
+        # Initial guesses and expected outcome 
         a = 0
         b = 2
         n = 100
-
-        # Expected result (known integral of x^2 from 0 to 1)
         expected_integral = 8/3
 
         # Call the simpson function
@@ -39,12 +37,10 @@ class TestCalculusFunctions(unittest.TestCase):
         def f(x):
             return x**3
 
-        # Initial guesses
+        # Initial guesses and expected outcome
         a = 0
         b = 2
         n = 500
-
-        # Expected result (known integral of x^3 from 0 to 1)
         expected_integral = 4
 
         # Call the trapezoid function
@@ -59,11 +55,9 @@ class TestCalculusFunctions(unittest.TestCase):
         def f(x):
             return x**2
 
-        # Integration limits
+        # Initial guesses and expected outcome
         a = 1
         b = 2
-
-        # Expected result (known integral of x^2 from 0 to 1)
         expected_integral = 7/3
 
         # Call the adaptive_trapezoid function
@@ -78,11 +72,9 @@ class TestCalculusFunctions(unittest.TestCase):
         def f(x):
             return x**2 - 4
 
-        # Initial guess and step size
+        # Initial guesses and expected outcome
         x = -3.0
         dx = 0.1
-
-        # Expected result (known root)
         expected_root = -2.0
 
         # Call the root_simple function
@@ -97,11 +89,9 @@ class TestCalculusFunctions(unittest.TestCase):
         def f(x):
             return x**2 - 4
 
-        # Initial interval containing the root
+        # Initial guesses and expected outcome
         x1 = 1
         x2 = 4
-
-        # Expected result (known root)
         expected_root = 2.0
 
         # Call the root_bisection function
@@ -116,11 +106,9 @@ class TestCalculusFunctions(unittest.TestCase):
         def f(x):
             return x**2 - 4
 
-        # Initial guesses
+        # Initial guesses and expected outcome
         x0 = 0.5
         x1 = 3.5
-
-        # Expected result (known root)
         expected_root = 2.0
 
         # Call the root_secant function
@@ -138,10 +126,8 @@ class TestCalculusFunctions(unittest.TestCase):
         def fp(x):
             return 2*x
 
-        # Initial guess
+        # Initial guesses and expected outcome
         x0 = -1.5
-
-        # Expected result (known root)
         expected_root = -2.0
 
         # Call the root_tangent function
