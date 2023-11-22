@@ -66,7 +66,32 @@ The linting workflow is defined in the .github/workflows/lint.yml file. This fil
 4. This setup helps maintain a consistent code style and catches potential issues early in the development process.
 
 ## Unit Testing:
-This the
+We imported all the function from the **tests.py** and ran those unit tests function from **calculus.py** file from the main repository. 
+The unit testing github action is below:
+```
+name: Unit testing with pytest
+
+on: [push] # when should we run this action
+
+jobs: # what should we do when it is run
+  build:
+    runs-on: ubuntu-latest # platform it runs on
+    steps:
+    - uses: actions/checkout@v4 # checkout your code
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10' # specify python version
+    - name: Install dependencies # which libraries do we need for testing
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt # they should be listed in this file
+    - name: Test with pytest
+      run: |
+        pip install pytest
+        pytest tests.py
+```
+**Output**
+
 <img width="550" alt="image" src="https://github.com/Mosaddeq107/23-Homework6G4/blob/main/Screenshot%202023-11-22%20at%203.06.08%20PM.png">
 
-## Bibliography:
