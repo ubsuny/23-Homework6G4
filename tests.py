@@ -47,7 +47,7 @@ class TestCalculusFunctions(unittest.TestCase):
         result = trapezoid(f, a, b, n)
 
         # Check if the result is close to the expected integral
-        self.assertAlmostEqual(result, expected_integral, places=3)   # Adjust places as needed
+        self.assertAlmostEqual(result, expected_integral, places=3)
 
     def test_adaptive_trapezoid_known_integral(self):
         """Test the adaptive_trapezoid function with a known integral."""
