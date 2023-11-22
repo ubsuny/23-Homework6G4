@@ -82,48 +82,32 @@ def root_secant(f, x0, x1, accuracy=1.0e-6, max_steps=20, root_debug=False):
             iterations.append([x1, f1])
     return x1, np.array(iterations)
 
-def root_tangent(f, fp, x0, accuracy=1.0e-6, max_steps=20, root_debug=False):
-    """Return root of f(x) with derivative fp = df(x)/dx
-    given initial guess x0, with specified accuracy.
-    Uses Newton-Raphson (tangent) root-finding algorithm.
-
-    Parameters:
-    - f (function): The function for which to find the root.
-    - fp (function): The derivative of the function.
-    - x0 (float): The initial guess for the root.
-    - accuracy (float): The desired accuracy for the root.
-    - max_steps (int): The maximum number of allowed steps.
-    - root_debug (bool): If True, print intermediate results during computation.
-
-    Returns:
-    tuple: The root value and an array containing iteration details.
+def root_simple(f, x, dx, accuracy=1.0e-6, max_steps=1000, root_debug=False):
+    """Return root of f(x) given guess x and step dx with specified accuracy.
+    Step must be in direction of root: dx must have same sign as (root - x).
     """
-    iterations = []
-    f0 = f(x0)
-    fp0 = fp(x0)
-    if fp0 == 0.0:
-        raise Exception(" root_tangent df/dx = 0 algorithm fails")
-    dx = -f0 / fp0
+    f0 = f(x)
+    fx = f0
     step = 0
-    if root_debug:
-        iterations.append([x0, f0])
-    if f0 == 0.0:
-        return x0
-    while True:
-        fp0 = fp(x0)
-        if fp0 == 0.0:
-            raise Exception(" root_tangent df/dx = 0 algorithm fails")
-        dx = -f0 / fp0
-        x0 += dx
-        f0 = f(x0)
-        if abs(dx) <= accuracy or f0 == 0.0:
-            return x0
+    iterations = []
+    if root_debug:        
+        root_print_header("Simple Search with Step Halving", accuracy)
+        root_print_step(step, x, dx, f0)
+        iterations.append([x,f0])
+    while abs(dx) > abs(accuracy) and f0 != 0.0:
+        x += dx
+        fx = f(x)
+        if f0 * fx < 0.0:   # stepped past root
+            x -= dx         # step back
+            dx /= 2.0       # use smaller step
         step += 1
         if step > max_steps:
-            root_max_steps("root_tangent", max_steps)
+            root_max_steps("root_simple", max_steps)
         if root_debug:
-            iterations.append([x0, f0])
-    return x0
+            root_print_step(step, x, dx, fx)
+            iterations.append([x,fx])
+    return x,np.array(iterations)
+
 
 
 
