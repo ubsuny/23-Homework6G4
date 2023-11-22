@@ -2,7 +2,7 @@
 This is a unit testing file for the integral and root finding.
 """
 import sys
-# import unittest
+import unittest
 from io import StringIO
 from calculus import simpson, trapezoid, adaptive_trapezoid, root_print_header, root_simple, root_secant, root_bisection, root_tangent
 
