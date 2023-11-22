@@ -98,8 +98,8 @@ class TestCalculusFunctions(unittest.TestCase):
             return x**2 - 4
 
         # Initial interval containing the root
-        x1 = 0
-        x2 = 3
+        x1 = 1
+        x2 = 4
 
         # Expected result (known root)
         expected_root = 2.0
