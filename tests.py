@@ -18,15 +18,13 @@ class TestCalculusFunctions(unittest.TestCase):
         def f(x):
             return x**2
 
-        # Integration limits
+        # Initial guessses 
         a = 0
-        b = 1
-
-        # Number of subintervals (even for Simpson's rule)
+        b = 2
         n = 100
 
         # Expected result (known integral of x^2 from 0 to 1)
-        expected_integral = 1/3
+        expected_integral = 8/3
 
         # Call the simpson function
         result = simpson(f, a, b, n)
