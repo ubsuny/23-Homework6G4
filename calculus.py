@@ -148,9 +148,29 @@ def root_simple(f, x, dx, accuracy=1.0e-6, max_steps=1000, root_debug=False):
 
 
 def root_bisection(f, x1, x2, accuracy=1.0e-6, max_steps=1000, root_debug=False):
-    """Return root of f(x) in bracketed by x1, x2 with specified accuracy.
+    """Return the root of the function f(x) within the bracket [x1, x2] with specified accuracy.
     Assumes that f(x) changes sign once in the bracketed interval.
-    Uses bisection root-finding algorithm.
+    Uses the bisection root-finding algorithm.
+
+    Parameters:
+    - f: Callable function representing the equation f(x) for which the root is sought.
+    - x1, x2: Initial bracket for the root. The root must lie between x1 and x2.
+    - accuracy: Desired accuracy of the root. The algorithm stops when the interval size is smaller than this value.
+    - max_steps: Maximum number of iterations allowed.
+    - root_debug: If True, store and return the iteration history for debugging purposes.
+
+    Returns:
+    - x_mid: The estimated root of the function f(x) within the specified bracket.
+    - iterations: A NumPy array containing the iteration history if root_debug is True, otherwise an empty array.
+
+    Raises:
+    - Exception: If the signs of f(x1) and f(x2) are not opposite (f(x1) * f(x2) > 0.0).
+    - Exception: If too many steps are taken (step > max_steps).
+
+    Notes:
+    - The bisection algorithm assumes that the function f(x) changes sign once in the bracketed interval [x1, x2].
+    - If f(x1) * f(x2) > 0.0, an exception is raised.
+    - If the iteration exceeds the maximum number of steps, an exception is raised.
     """
     iterations = []
     f1 = f(x1)
@@ -186,8 +206,26 @@ def root_bisection(f, x1, x2, accuracy=1.0e-6, max_steps=1000, root_debug=False)
 
 
 def root_secant(f, x0, x1, accuracy=1.0e-6, max_steps=20, root_debug=False):
-    """Return root of f(x) given guesses x0 and x1 with specified accuracy.
-    Uses secant root-finding algorithm.
+    """Return the root of the function f(x) given initial guesses x0 and x1
+    with specified accuracy. Uses the secant root-finding algorithm.
+
+    Parameters:
+    - f: Callable function representing the equation f(x) for which the root is sought.
+    - x0: Initial guess for the root.
+    - x1: Another initial guess for the root.
+    - accuracy: Desired accuracy of the root. The algorithm stops when the change in x is smaller than this value.
+    - max_steps: Maximum number of iterations allowed.
+    - root_debug: If True, store and return the iteration history for debugging purposes.
+
+    Returns:
+    - The root of the function f(x).
+
+    Raises:
+    - Exception: If the secant line becomes horizontal (f(x0) = f(x1)) during the iteration.
+
+    Notes:
+    - If f(x0) or f(x1) is already close to zero, x0 or x1 is returned as the root.
+    - If the iteration exceeds the maximum number of steps, an exception is raised.
     """
     iterations = []
     f0 = f(x0)
@@ -216,9 +254,27 @@ def root_secant(f, x0, x1, accuracy=1.0e-6, max_steps=20, root_debug=False):
 
 
 def root_tangent(f, fp, x0, accuracy=1.0e-6, max_steps=20, root_debug=False):
-    """Return root of f(x) with derivative fp = df(x)/dx
-    given initial guess x0, with specified accuracy.
-    Uses Newton-Raphson (tangent) root-finding algorithm.
+    """
+    Return the root of the function f(x) with its derivative fp(x) using
+    the Newton-Raphson (tangent) root-finding algorithm.
+
+    Parameters:
+    - f: Callable function representing the equation f(x) for which the root is sought.
+    - fp: Callable function representing the derivative of f(x) with respect to x.
+    - x0: Initial guess for the root.
+    - accuracy: Desired accuracy of the root. The algorithm stops when the change in x is smaller than this value.
+    - max_steps: Maximum number of iterations allowed.
+    - root_debug: If True, store and return the iteration history for debugging purposes.
+
+    Returns:
+    - The root of the function f(x).
+
+    Raises:
+    - Exception: If the derivative fp(x) becomes zero during the iteration.
+
+    Notes:
+    - If f(x0) is already close to zero, x0 is returned as the root.
+    - If the iteration exceeds the maximum number of steps, an exception is raised.
     """
     iterations = []
     f0 = f(x0)
