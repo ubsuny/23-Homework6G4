@@ -117,8 +117,8 @@ class TestCalculusFunctions(unittest.TestCase):
             return x**2 - 4
 
         # Initial guesses
-        x0 = 1.0
-        x1 = 3.0
+        x0 = 0.5
+        x1 = 3.5
 
         # Expected result (known root)
         expected_root = 2.0
