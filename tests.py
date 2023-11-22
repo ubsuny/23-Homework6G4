@@ -39,15 +39,13 @@ class TestCalculusFunctions(unittest.TestCase):
         def f(x):
             return x**3
 
-        # Integration limits
+        # Initial guesses
         a = 0
-        b = 1
-
-        # Number of subintervals
-        n = 100
+        b = 2
+        n = 500
 
         # Expected result (known integral of x^3 from 0 to 1)
-        expected_integral = 1/4
+        expected_integral = 4
 
         # Call the trapezoid function
         result = trapezoid(f, a, b, n)
