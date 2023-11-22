@@ -79,11 +79,11 @@ class TestCalculusFunctions(unittest.TestCase):
             return x**2 - 4
 
         # Initial guess and step size
-        x = 1.0
+        x = -3.0
         dx = 0.1
 
         # Expected result (known root)
-        expected_root = 2.0
+        expected_root = -2.0
 
         # Call the root_simple function
         result, _ = root_simple(f, x, dx, accuracy=1e-6)
