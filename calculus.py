@@ -148,9 +148,29 @@ def root_simple(f, x, dx, accuracy=1.0e-6, max_steps=1000, root_debug=False):
 
 
 def root_bisection(f, x1, x2, accuracy=1.0e-6, max_steps=1000, root_debug=False):
-    """Return root of f(x) in bracketed by x1, x2 with specified accuracy.
+    """Return the root of the function f(x) within the bracket [x1, x2] with specified accuracy.
     Assumes that f(x) changes sign once in the bracketed interval.
-    Uses bisection root-finding algorithm.
+    Uses the bisection root-finding algorithm.
+
+    Parameters:
+    - f: Callable function representing the equation f(x) for which the root is sought.
+    - x1, x2: Initial bracket for the root. The root must lie between x1 and x2.
+    - accuracy: Desired accuracy of the root. The algorithm stops when the interval size is smaller than this value.
+    - max_steps: Maximum number of iterations allowed.
+    - root_debug: If True, store and return the iteration history for debugging purposes.
+
+    Returns:
+    - x_mid: The estimated root of the function f(x) within the specified bracket.
+    - iterations: A NumPy array containing the iteration history if root_debug is True, otherwise an empty array.
+
+    Raises:
+    - Exception: If the signs of f(x1) and f(x2) are not opposite (f(x1) * f(x2) > 0.0).
+    - Exception: If too many steps are taken (step > max_steps).
+
+    Notes:
+    - The bisection algorithm assumes that the function f(x) changes sign once in the bracketed interval [x1, x2].
+    - If f(x1) * f(x2) > 0.0, an exception is raised.
+    - If the iteration exceeds the maximum number of steps, an exception is raised.
     """
     iterations = []
     f1 = f(x1)
