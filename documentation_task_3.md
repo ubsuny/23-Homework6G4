@@ -22,7 +22,7 @@ Approximates the definite integral of a given function using the composite Simps
 
 **Returns:**
 - Approximation of the definite integral.
-
+  
 **Example:**
 ```python
 import numpy as np
@@ -50,8 +50,11 @@ The linting workflow is defined in the .github/workflows/lint.yml file. This fil
 
 **Initial Result:**
 
+<img width="550" alt="image" src="https://github.com/Mosaddeq107/23-Homework6G4/blob/main/Screenshot%202023-11-22%20at%2012.26.55%20PM.png">
 
 **Result after making corrections:**
+
+<img width="550" alt="image" src="https://github.com/Mosaddeq107/23-Homework6G4/blob/main/Screenshot%202023-11-22%20at%2012.30.03%20PM.png">
 
 **Usage**
 1. Ensure that you have a .github/workflows/lint.yml file in your repository with the provided configuration.
@@ -62,5 +65,8 @@ The linting workflow is defined in the .github/workflows/lint.yml file. This fil
 
 4. This setup helps maintain a consistent code style and catches potential issues early in the development process.
 
-## Unit Testing
+## Unit Testing:
+This the
+<img width="550" alt="image" src="https://github.com/Mosaddeq107/23-Homework6G4/blob/main/Screenshot%202023-11-22%20at%203.06.08%20PM.png">
+
 ## Bibliography:
