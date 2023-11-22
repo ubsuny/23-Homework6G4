@@ -13,130 +13,77 @@
 
 This section explores and compares various numerical integration and root-finding methods in Python, specifically focusing on the integration functions provided by NumPy **(numpy.trapz(), numpy.simps(), numpy.adaptive_trapz()) and custom implementation functions (simpson(), trapezoid(), adaptive_trapezoid())**
 
-Integration Functions
-1. numpy.trapz()
-Description:
+**Integration Functions**
+
+**1. numpy.trapz()**
+**Description:**
 
 Calculates the definite integral of a function using the trapezoidal rule.
-Usage:
 
-python
-Copy code
+Usage:
+```
 import numpy as np
 result = np.trapz(y, x)
-2. numpy.simps()
-Description:
+```
+**2. numpy.simps()**
+
+**Description:**
 
 Calculates the definite integral of a function using Simpson's rule.
-Usage:
 
-python
-Copy code
+**Usage:**
+```
 import numpy as np
 result = np.simps(y, x)
-3. numpy.adaptive_trapz()
-Description:
+```
+
+**3. numpy.adaptive_trapz()**
+
+**Description:**
 
 An adaptive trapezoidal integration method using the NumPy library.
-Usage:
 
-python
-Copy code
+**Usage:**
+```
 import numpy as np
-result = np.adaptive_trapz(func, a, b, acc)
-4. simpson()
-Description:
+result = np.adaptive_trapz(func, a, b, ACC)
+```
+**4. simpson()
+Description:**
 
 Custom implementation of Simpson's rule for numerical integration.
-Usage:
-
-python
-Copy code
+**Usage:**
+```
 result = simpson(func, a, b, n)
-5. trapezoid()
-Description:
+```
+**5. trapezoid()
+Description:**
 
 Custom implementation of the trapezoidal rule for numerical integration.
-Usage:
-
-python
-Copy code
+**Usage:**
+```
 result = trapezoid(func, a, b, n)
-6. adaptive_trapezoid()
-Description:
+```
+**6. adaptive_trapezoid()
+Description:**
 
 Custom implementation of an adaptive trapezoidal integration method.
-Usage:
+**Usage:**
 
-python
-Copy code
+```
 result = adaptive_trapezoid(func, a, b, acc)
-Root-Finding Functions
-1. root_print_header()
-Description:
+```
 
-Prints a header for root-finding methods.
-Usage:
-
-python
-Copy code
-root_print_header()
-2. root_simple()
-Description:
-
-Simple root-finding method.
-Usage:
-
-python
-Copy code
-result = root_simple(func, x0, iterations)
-3. root_secant()
-Description:
-
-Secant method for root finding.
-Usage:
-
-python
-Copy code
-result = root_secant(func, x0, x1, iterations)
-4. root_bisection()
-Description:
-
-Bisection method for root finding.
-Usage:
-
-python
-Copy code
-result = root_bisection(func, a, b, iterations)
-5. root_tangent()
-Description:
-
-Tangent method for root finding.
-Usage:
-
-python
-Copy code
-result = root_tangent(func, fprime, x0, accuracy)
-Usage and Examples
-Integration Examples:
-
-python
-Copy code
-# Example usage of numpy.trapz()
+**Example usage of numpy.trapz()**
+```
 import numpy as np
 result_trapz = np.trapz(y, x)
+```
 
-# Example usage of simpson()
+**Example usage of simpson()**
+```
 result_simpson = simpson(func, a, b, n)
-Root-Finding Examples:
-
-python
-Copy code
-# Example usage of root_simple()
-result_simple = root_simple(func, x0, iterations)
-
-# Example usage of root_tangent()
-result_tangent = root_tangent(func, fprime, x0, accuracy)
+```
 
 
 
@@ -152,23 +99,27 @@ result_tangent = root_tangent(func, fprime, x0, accuracy)
 ### Comparison Considerations
 **Ease of Use:**
 
-NumPy functions are easy to use and provide a concise syntax for integration.
-Custom functions offer flexibility but may require more setup.
+1. NumPy functions are easy to use and provide a concise syntax for integration.
+
+2. Custom functions offer flexibility but may require more setup.
 
 **Performance:**
 
-NumPy functions are optimized and typically perform well.
-Custom functions' performance may vary depending on the implementation.
+1. NumPy functions are optimized and typically perform well.
+
+2. Custom functions' performance may vary depending on the implementation.
 
 **Adaptability:**
 
-NumPy functions are general-purpose and work well for standard use cases.
-Custom functions allow for specific adaptations to meet project requirements.
+1. NumPy functions are general-purpose and work well for standard use cases.
+
+2. Custom functions allow for specific adaptations to meet project requirements.
 
 **Accuracy:**
 
-NumPy functions are reliable and widely used in scientific computing.
-Custom functions may require careful tuning for optimal accuracy.
+1. NumPy functions are reliable and widely used in scientific computing.
+
+2. Custom functions may require careful tuning for optimal accuracy.
 
 
 
