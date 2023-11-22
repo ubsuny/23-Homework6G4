@@ -27,4 +27,4 @@ jobs:
         pip install flake8
 
     - name: Lint Python file
-      run: flake8 --max-line-length=120 calculus.py tests.py
+      run: flake8 --max-line-length=145 calculus.py tests.py

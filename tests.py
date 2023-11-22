@@ -18,7 +18,7 @@ class TestCalculusFunctions(unittest.TestCase):
         def f(x):
             return x**2
 
-        # Initial guesses and expected outcome 
+        # Initial guesses and expected outcome
         a = 0
         b = 2
         n = 100
