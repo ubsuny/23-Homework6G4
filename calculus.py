@@ -6,9 +6,7 @@ the trapezoidal rule, and the adaptive trapezoidal method. It also includes
 root-finding algorithms such as simple root, bisection, secant, and tangent methods.
 """
 
-# import math
 import sys
-# import cmath
 import numpy as np
 
 
