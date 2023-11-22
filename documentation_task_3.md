@@ -13,8 +13,6 @@
 
 This section explores and compares various numerical integration and root-finding methods in Python, specifically focusing on the integration functions provided by NumPy **(numpy.trapz(), numpy.simps(), numpy.adaptive_trapz()) and custom implementation functions (simpson(), trapezoid(), adaptive_trapezoid())**
 
-**Integration Functions**
-
 **1. numpy.trapz()**
 **Description:**
 
@@ -221,3 +219,8 @@ jobs: # what should we do when it is run
 
 <img width="550" alt="image" src="https://github.com/Mosaddeq107/23-Homework6G4/blob/main/Screenshot%202023-11-22%20at%203.06.08%20PM.png">
 
+# Bibliography:
+1. [Wikipedia](https://www.wikipedia.org/)
+2. [Numpy Org](https://numpy.org/)
+3. [OpenAI](https://chat.openai.com/)
+4. [Compphys](https://github.com/ubsuny/CompPhys)
