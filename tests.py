@@ -1,4 +1,4 @@
-""" 
+"""
 This is a unit testing file for the integral and root finding.
 """
 import unittest
@@ -9,6 +9,7 @@ from calculus import (
     root_simple, root_bisection, root_secant,
     root_tangent, root_print_header
 )
+
 
 class TestCalculusFunctions(unittest.TestCase):
     """
@@ -186,6 +187,7 @@ class TestCalculusFunctions(unittest.TestCase):
 
         # Check if the result matches the expected output
         self.assertEqual(result, expected_output)
+
 
 if __name__ == "__main__":
     unittest.main()
