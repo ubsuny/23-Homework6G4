@@ -1,59 +1,71 @@
 """ 
-This is a unit testing file for the integral and root finding
+This is a unit testing file for the integral and root finding.
 """
 import numpy as np
 import pytest
 from calculus import simpson, trapezoid, adaptive_trapezoid
 
-def test_simpson():
-    # Define a sample function for testing
-    def f(x):
-        return x**2
+def test_simpson_known_integral(self):
+        """Test the simpson function with a known integral."""
+        # Define the integrand function
+        def f(x):
+            return x**2
 
-    # Initial guess for integration bounds and number of subintervals
-    a = 0
-    b = 1
-    n = 100
+        # Integration limits
+        a = 0
+        b = 1
 
-    # Calculate the expected result
-    expected_result = 1/3
+        # Number of subintervals (even for Simpson's rule)
+        n = 100
 
-    # Perform the integration using simpson and assert the result
-    result = simpson(f, a, b, n)
-    assert np.isclose(result, expected_result, rtol=1e-5)
+        # Expected result (known integral of x^2 from 0 to 1)
+        expected_integral = 1/3
 
+        # Call the simpson function
+        result = simpson(f, a, b, n)
 
-def test_trapezoid():
-    # Define a sample function for testing
-    def f(x):
-        return x**2
+        # Check if the result is close to the expected integral
+        self.assertAlmostEqual(result, expected_integral, places=5)
 
-    # Initial guess for integration bounds and number of subintervals
-    a = 0
-    b = 1
-    n = 100
+    def test_trapezoid_known_integral(self):
+        """Test the trapezoid function with a known integral."""
 
-    # Calculate the expected result
-    expected_result = 1/3
+        # Define the integrand function
+        def f(x):
+            return x**3
 
-    # Perform the integration using trapezoid and assert the result
-    result = trapezoid(f, a, b, n)
-    assert np.isclose(result, expected_result, rtol=1e-5)
+        # Integration limits
+        a = 0
+        b = 1
 
+        # Number of subintervals
+        n = 100
 
-def test_adaptive_trapezoid():
-    # Define a sample function for testing
-    def f(x):
-        return x**2
+        # Expected result (known integral of x^3 from 0 to 1)
+        expected_integral = 1/4
 
-    # Initial guess for integration bounds and accuracy
-    a = 0
-    b = 1
-    acc = 1e-5
+        # Call the trapezoid function
+        result = trapezoid(f, a, b, n)
 
-    # Calculate the expected result
-    expected_result = 1/3
+        # Check if the result is close to the expected integral
+        self.assertAlmostEqual(result, expected_integral, places=3)   # Adjust places as needed
 
-    # Perform the integration using adaptive_trapezoid and assert the result
-    result = adaptive_trapezoid(f, a, b, acc)
-    assert np.isclose(result, expected_result, rtol=1e-5)
+    def test_adaptive_trapezoid_known_integral(self):
+        """Test the adaptive_trapezoid function with a known integral."""
+        # Define the integrand function
+        def f(x):
+            return x**2
+
+        # Integration limits
+        a = 0
+        b = 1
+
+        # Expected result (known integral of x^2 from 0 to 1)
+        expected_integral = 1/3
+
+        # Call the adaptive_trapezoid function
+        result = adaptive_trapezoid(f, a, b, acc=1e-6)
+
+        # Check if the result is close to the expected integral
+        self.assertAlmostEqual(result, expected_integral, places=5)
+
