@@ -216,9 +216,27 @@ def root_secant(f, x0, x1, accuracy=1.0e-6, max_steps=20, root_debug=False):
 
 
 def root_tangent(f, fp, x0, accuracy=1.0e-6, max_steps=20, root_debug=False):
-    """Return root of f(x) with derivative fp = df(x)/dx
-    given initial guess x0, with specified accuracy.
-    Uses Newton-Raphson (tangent) root-finding algorithm.
+    """
+    Return the root of the function f(x) with its derivative fp(x) using
+    the Newton-Raphson (tangent) root-finding algorithm.
+
+    Parameters:
+    - f: Callable function representing the equation f(x) for which the root is sought.
+    - fp: Callable function representing the derivative of f(x) with respect to x.
+    - x0: Initial guess for the root.
+    - accuracy: Desired accuracy of the root. The algorithm stops when the change in x is smaller than this value.
+    - max_steps: Maximum number of iterations allowed.
+    - root_debug: If True, store and return the iteration history for debugging purposes.
+
+    Returns:
+    - The root of the function f(x).
+
+    Raises:
+    - Exception: If the derivative fp(x) becomes zero during the iteration.
+
+    Notes:
+    - If f(x0) is already close to zero, x0 is returned as the root.
+    - If the iteration exceeds the maximum number of steps, an exception is raised.
     """
     iterations = []
     f0 = f(x0)
