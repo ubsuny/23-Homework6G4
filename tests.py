@@ -139,10 +139,10 @@ class TestCalculusFunctions(unittest.TestCase):
             return 2*x
 
         # Initial guess
-        x0 = 1.5
+        x0 = -1.5
 
         # Expected result (known root)
-        expected_root = 2.0
+        expected_root = -2.0
 
         # Call the root_tangent function
         result = root_tangent(f, fp, x0, accuracy=1e-6)
