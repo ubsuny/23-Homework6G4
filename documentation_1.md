@@ -4,7 +4,7 @@ to evaluate the integral between the intervals. Simpsons rule  fits a parabolic 
 The Trapezoidal rule approximates the area under the curve by dividing the region into trapezoids and summing up their areas. Adaptive trapezoidal rule recursively apply the trapezoidal rule to subintervals until a specified accuracy is achieved.
 
 Using the module file calculas.py from (https://github.com/ubsuny/CompPhys/blob/main/Calculus/integrals.py) I estimate the integral value and plots of three different (exponential, cosine 
-and cubic function) The boundary given [0, 10.group number] and [0, pi.group number] encounters the zero year while integrating as the function is defined as exp(-1/x) and cos(1/x). Thus to 
+and cubic function) The boundary given [0, 10.group number] and [0, pi.group number] encounters the zero error while integrating as the function is defined as exp(-1/x) and cos(1/x). Thus to 
 avoid the zero error, I consider infinitesimal value close to zero and modified the code so that the integral value doesnot change.
 ``` python
 def f(x):
@@ -68,6 +68,92 @@ def compute_simpson_integral(n):
         old_integral = new_integral
         iterations += 1
 ```
-The method employed is similar to both simpsons and trapezoid with initial iteration starting from 1.
+The method employed is similar to both simpsons and trapezoid  with iteration initialized at 1 for adaptive trapezoid method, iteration is initialized at zero.
+``` python
+def adaptive_trapezoid(f, a, b, accuracy):
+  """
+    Approximate the definite integral of a given function using Adaptive trapezoid's rule.
 
+    Parameters:
+    - f (function): The integrand function.
+    - a (float): The lower limit of integration.
+    - b (float): The upper limit of integration.
+    - n (int): The initial number of subintervals for adaptive trapezoid rule.
+    - accuracy (float): The desired accuracy for the approximation.
+
+    Returns:
+    -  Approximate integral value and the number of iterations
+      required to achieve specified accuracy.
+    """
+  old_s = np.inf
+  h = b - a
+  n = 1
+  s = (f(a) + f(b)) * 0.5
+  iterations = 0  # Initialize iteration counter
+
+  while abs(h * (old_s - s * 0.5)) > accuracy:
+        iterations += 1  # Increment the iteration counter
+        old_s = s
+        for i in np.arange(n):
+            s += f(a + (i + 0.5) * h)
+        n *= 2
+        h *= 0.5
+
+  return h * s, iterations  # Return the integral and the number of iterations
+```
+Code implemented to find the iteration steps for each method with imported module file iteration.py.
    
+  ```python
+import math
+import numpy as np
+import matplotlib.pyplot as plt
+from math import pi
+from scipy.integrate import quad
+# Import the simpson function from calculus.py (assuming it's in the same directory)
+from iteration import *
+
+"""
+ Numerical integration techniques for the function f(x) = cos(1/x) over a given interval.
+Functions:
+- f(x): The function to be integrated,with special handling for x=0 to avoid numerical issues.
+- simpson(f, a, b, n): Implementation of Simpson's rule for numerical integration.
+- trapezoid(f, a, b, n): Implementation of the trapezoidal rule for numerical integration.
+- adaptive_trapezoid(f, a, b, desired_accuracy, output): Implementation of adaptive trapezoidal integration.
+
+Variables:
+- a: Lower bound of the integration interval.
+- b: Upper bound of the integration interval.
+- n: Number of subintervals for Simpson's and trapezoidal rule.
+- desired_accuracy: Desired accuracy for the adaptive trapezoidal integration.
+- simpson_integral, trapezoid_integral, adaptive_integral: Results of numerical integration.
+"""
+# Avoid division by zero
+# Function to calculate cos(1/x) with handling for x near 0
+def f(x):
+    safe_x = np.clip(x, 1e-10, np.inf)
+    return np.where(x != 0, np.cos(1/safe_x), 0)
+
+ # Define the integration bounds
+a = 1e-6
+b = 4 * np.pi
+accuracy = 1e-3
+#result, error = quad(f, a, b)
+
+# Define the number of subintervals
+n = 20
+simpson_integral, simpson_iterations = simpson(f, a, b, n, accuracy)
+trapezoid_integral, trapezoid_iterations = trapezoid(f, a, b, n, accuracy)
+adaptive_integral, adaptive_evaluations = adaptive_trapezoid(f, a, b, accuracy)
+
+print(f"Simpson: Integral = {simpson_integral}, Func = cos(1/x), Iterations = {simpson_iterations}")
+print(f"Trapezoidal: Integral = {trapezoid_integral}, Func = cos(1/x), Iterations = {trapezoid_iterations}")
+print(f"Adaptive Trapezoidal : Integral = {adaptive_integral}, Func = cos(1/x), Evaluations = {adaptive_evaluations}")
+```
+The output for the code implemented:
+   
+
+- Simpson: Integral = 11.035108805732696, Func = cos(1/x), Iterations = 10
+- Trapezoidal: Integral = 11.035231063180158, Func = cos(1/x), Iterations = 10
+- Adaptive Trapezoidal : Integral = 11.034152623449767, Func = cos(1/x), Evaluations = 13
+
+Outputs and plots of all functions are included in the task 1 folder of group 6 homework repository. 
