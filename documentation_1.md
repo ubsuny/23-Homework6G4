@@ -157,3 +157,7 @@ The output for the code implemented:
 - Adaptive Trapezoidal : Integral = 11.034152623449767, Func = cos(1/x), Evaluations = 13
 
 Outputs and plots of all functions are included in the task 1 folder of group 6 homework repository. 
+
+## References
+
+https://github.com/ubsuny/CompPhys/blob/main/Calculus/
