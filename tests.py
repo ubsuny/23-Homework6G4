@@ -30,7 +30,7 @@ class TestCalculusFunctions(unittest.TestCase):
         # Check if the result is close to the expected integral
         self.assertAlmostEqual(result, expected_integral, places=5)
 
-    def test_trapezoid_known_integral(self):
+    def test_trapezoid(self):
         """Test the trapezoid function with a known integral."""
 
         # Define the integrand function
@@ -49,7 +49,7 @@ class TestCalculusFunctions(unittest.TestCase):
         # Check if the result is close to the expected integral
         self.assertAlmostEqual(result, expected_integral, places=3)
 
-    def test_adaptive_trapezoid_known_integral(self):
+    def test_adaptive_trapezoid(self):
         """Test the adaptive_trapezoid function with a known integral."""
         # Define the integrand function
         def f(x):
@@ -66,7 +66,7 @@ class TestCalculusFunctions(unittest.TestCase):
         # Check if the result is close to the expected integral
         self.assertAlmostEqual(result, expected_integral, places=5)
 
-    def test_root_simple_known_root(self):
+    def test_root_simple(self):
         """Test the root_simple function with a known root."""
         # Define the function
         def f(x):
@@ -83,7 +83,7 @@ class TestCalculusFunctions(unittest.TestCase):
         # Check if the result is close to the expected root
         self.assertAlmostEqual(result, expected_root, places=5)
 
-    def test_root_bisection_known_root(self):
+    def test_root_bisection(self):
         """Test the root_bisection function with a known root."""
         # Define the function
         def f(x):
@@ -100,7 +100,7 @@ class TestCalculusFunctions(unittest.TestCase):
         # Check if the result is close to the expected root
         self.assertAlmostEqual(result, expected_root, places=5)
 
-    def test_root_secant_known_root(self):
+    def test_root_secant(self):
         """Test the root_secant function with a known root."""
         # Define the function
         def f(x):
@@ -117,7 +117,7 @@ class TestCalculusFunctions(unittest.TestCase):
         # Check if the result is close to the expected root
         self.assertAlmostEqual(result, expected_root, places=5)
 
-    def test_root_tangent_known_root(self):
+    def test_root_tangent(self):
         """Test the root_tangent function with a known root."""
         # Define the function and its derivative
         def f(x):
