@@ -186,8 +186,26 @@ def root_bisection(f, x1, x2, accuracy=1.0e-6, max_steps=1000, root_debug=False)
 
 
 def root_secant(f, x0, x1, accuracy=1.0e-6, max_steps=20, root_debug=False):
-    """Return root of f(x) given guesses x0 and x1 with specified accuracy.
-    Uses secant root-finding algorithm.
+    """Return the root of the function f(x) given initial guesses x0 and x1
+    with specified accuracy. Uses the secant root-finding algorithm.
+
+    Parameters:
+    - f: Callable function representing the equation f(x) for which the root is sought.
+    - x0: Initial guess for the root.
+    - x1: Another initial guess for the root.
+    - accuracy: Desired accuracy of the root. The algorithm stops when the change in x is smaller than this value.
+    - max_steps: Maximum number of iterations allowed.
+    - root_debug: If True, store and return the iteration history for debugging purposes.
+
+    Returns:
+    - The root of the function f(x).
+
+    Raises:
+    - Exception: If the secant line becomes horizontal (f(x0) = f(x1)) during the iteration.
+
+    Notes:
+    - If f(x0) or f(x1) is already close to zero, x0 or x1 is returned as the root.
+    - If the iteration exceeds the maximum number of steps, an exception is raised.
     """
     iterations = []
     f0 = f(x0)
