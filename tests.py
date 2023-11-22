@@ -4,11 +4,7 @@ This is a unit testing file for the integral and root finding.
 import unittest
 import sys
 from io import StringIO
-from calculus import (
-    simpson, trapezoid, adaptive_trapezoid,
-    root_simple, root_bisection, root_secant,
-    root_tangent, root_print_header
-)
+from calculus import simpson, trapezoid, adaptive_trapezoid, root_simple, root_bisection, root_secant, root_tangent, root_print_header
 
 
 class TestCalculusFunctions(unittest.TestCase):
