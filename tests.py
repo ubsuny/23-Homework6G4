@@ -60,14 +60,14 @@ class TestCalculusFunctions(unittest.TestCase):
             return x**2
 
         # Integration limits
-        a = 0
-        b = 1
+        a = 1
+        b = 2
 
         # Expected result (known integral of x^2 from 0 to 1)
-        expected_integral = 1/3
+        expected_integral = 7/3
 
         # Call the adaptive_trapezoid function
-        result = adaptive_trapezoid(f, a, b, acc=1e-6)
+        result = adaptive_trapezoid(f, a, b, acc=1e-7)
 
         # Check if the result is close to the expected integral
         self.assertAlmostEqual(result, expected_integral, places=5)
