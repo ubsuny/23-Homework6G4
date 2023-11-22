@@ -12,7 +12,7 @@ class TestCalculusFunctions(unittest.TestCase):
     Test various functions from the calculus module.
     """
 
-    def test_simpson_known_integral(self):
+    def test_simpson(self):
         """Test the simpson function with a known integral."""
         # Define the integrand function
         def f(x):
